@@ -1,4 +1,4 @@
-import { ACTIONS_TYPE, CurrencyReducersTypes } from './actions';
+import {ACTIONS_TYPE, CurrencyReducersTypes} from './actions';
 
 
 export type CurrencyType = {
@@ -43,23 +43,19 @@ export const currencyReducer = (state: CurrencyState = initialState, action: Cur
         case ACTIONS_TYPE.CHANGE_CURRENCY_FIELD_TYPE:
             return {
                 ...state,
-                ...action.payload,
-            };
-        case ACTIONS_TYPE.CHANGE_CHANGE_ACTION :
-        case ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY :
+                amountOfBYN: action.payload.amountOfBYN,
+                amountOfCurrency: action.payload.amountOfCurrency
+            }
+        case ACTIONS_TYPE.CHANGE_CHANGE_ACTION:
             return {
                 ...state,
-                ...action.payload,
-                amountOfCurrency : '',
-                amountOfBYN: '',
-            };
-        // case ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY:
-        //     return {
-        //         ...state,
-        //         ...action.payload,
-        //         amountOfCurrency : '',
-        //         amountOfBYN: '',
-        //     };
+                isBuying: action.payload.isBuying
+            }
+        case ACTIONS_TYPE.CHANGE_CURRENT_CURRENCY:
+            return {
+                ...state,
+                currentCurrency: action.payload.currentCurrency
+            }
         default:
             return state;
     }
